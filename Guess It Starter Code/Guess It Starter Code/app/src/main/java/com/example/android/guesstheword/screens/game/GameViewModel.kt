@@ -1,6 +1,5 @@
 package com.example.android.guesstheword.screens.game
 
-import android.content.IntentSender
 import android.os.CountDownTimer
 import android.text.format.DateUtils
 import android.util.Log
@@ -68,7 +67,7 @@ class GameViewModel : ViewModel() {
     lateinit var wordList: MutableList<String>
 
     init {
-        _eventGameFinish.value = false
+//        _eventGameFinish.value = false
         Log.i("GameViewModel", "GameViewModel has been created!")
         resetList()
         nextWord()
@@ -94,6 +93,7 @@ class GameViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
+        timer.cancel()
         Log.i("GameViewModel", "GameViewModel has been destroyed!")
     }
 
@@ -139,6 +139,14 @@ class GameViewModel : ViewModel() {
 
     }
 
+    fun onGameFinishComplete() {
+        _eventGameFinish.value = false
+    }
+
+    fun onBuzzComplete() {
+        _eventBuzz.value = BuzzType.NO_BUZZ
+    }
+
 
     /** Methods for buttons presses **/
 
@@ -152,7 +160,6 @@ class GameViewModel : ViewModel() {
         nextWord()
     }
 
-    fun onGameFinishComplete() {
-        _eventGameFinish.value = false
-    }
+
+
 }
