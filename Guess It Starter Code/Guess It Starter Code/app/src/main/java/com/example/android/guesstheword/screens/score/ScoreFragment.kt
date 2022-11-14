@@ -58,8 +58,8 @@ class ScoreFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ScoreViewModel::class.java)
 
-//        binding.scoreViewModel = viewModel
-//        binding.setLifecycleOwner(this)
+        binding.scoreViewModel = viewModel
+        binding.setLifecycleOwner(this)
 
 
         // Navigates back to title when button is pressed
